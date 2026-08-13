@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>그 사진, 여기서 찍었었지</title>
+  <meta name="description" content="그 사진, 여기서 찍었었지 - Hyundai UserStory">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="그 사진, 여기서 찍었었지">
+  <meta property="og:description" content="Hyundai UserStory 인터랙티브 플레이북">
+  <meta property="og:url" content="https://userstory-gn8-13.vercel.app/">
+  <meta property="og:image" content="https://userstory-gn8-13.vercel.app/assets/Thumbnail/T_Thumbnail.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://userstory-gn8-13.vercel.app/assets/Thumbnail/T_Thumbnail.png">
+  <link rel="stylesheet" href="assets/style.css?v=20260813-photo-r1">
+</head>
+<body>
+  <main>
+    <section id="playbook" class="page-section sequence-root">
+      <video id="sequence-video" playsinline preload="auto"></video>
+    </section>
+
+    <div id="scenario-header" class="global-playbook-title">그 사진, 여기서 찍었었지</div>
+
+    <section id="scenario-canvas" class="page-section scenario-canvas-stage" aria-label="시나리오 캔버스">
+      <div class="canvas-viewport">
+        <div id="scenario-canvas-track" class="canvas-track">
+          <div class="canvas-slide active"><img src="assets/ScenarioCanvas/T_ScenarioCanvas_01.jpg" alt="시나리오 캔버스 1" draggable="false"></div>
+          <div class="canvas-slide"><img src="assets/ScenarioCanvas/T_ScenarioCanvas_02.jpg" alt="시나리오 캔버스 2" draggable="false"></div>
+          <div class="canvas-slide"><img src="assets/ScenarioCanvas/T_ScenarioCanvas_03.jpg" alt="시나리오 캔버스 3" draggable="false"></div>
+          <div class="canvas-slide"><img src="assets/ScenarioCanvas/T_ScenarioCanvas_04.jpg" alt="시나리오 캔버스 4" draggable="false"></div>
+          <div class="canvas-slide"><img src="assets/ScenarioCanvas/T_ScenarioCanvas_05.jpg" alt="시나리오 캔버스 5" draggable="false"></div>
+        </div>
+        <div class="canvas-bottom-controls">
+          <div id="scenario-indicator" class="canvas-pagination" aria-label="시나리오 캔버스 페이지">
+            <div class="pagination-dots">
+              <button class="p-dot active" type="button" data-idx="0" aria-label="1페이지"></button>
+              <button class="p-dot" type="button" data-idx="1" aria-label="2페이지"></button>
+              <button class="p-dot" type="button" data-idx="2" aria-label="3페이지"></button>
+              <button class="p-dot" type="button" data-idx="3" aria-label="4페이지"></button>
+              <button class="p-dot" type="button" data-idx="4" aria-label="5페이지"></button>
+            </div>
+            <span id="indicator-counter" class="pagination-text">01 / 05</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="start-overlay" class="start-overlay" type="button" aria-label="클릭하여 시작">
+    <span class="start-guide-content">
+      <span class="start-guide-motion" aria-hidden="true"></span>
+      <span class="start-guide-copy">
+        <strong>클릭하여 시작</strong>
+        <small>사운드와 함께 재생됩니다</small>
+      </span>
+    </span>
+  </button>
+  <button id="skip-button" class="media-skip-button" type="button" hidden>SKIP</button>
+  <button id="playback-button" class="media-playback-button" type="button" aria-label="재생" hidden>▶</button>
+  <div id="volume-control" class="media-volume-control" hidden>
+    <input id="volume-slider" class="media-volume-slider" type="range" min="0" max="1" step=".05" aria-label="볼륨">
+    <button id="volume-button" class="media-volume-button" type="button" aria-label="음소거">🔊</button>
+  </div>
+
+  <script type="module" src="assets/app.js?v=20260813-photo-r1"></script>
+</body>
+</html>
