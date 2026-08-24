@@ -11,7 +11,7 @@ const scenarioTrack = document.querySelector("#scenario-canvas-track");
 const scenarioDots = document.querySelectorAll("#scenario-indicator .p-dot");
 const indicatorCounter = document.querySelector("#indicator-counter");
 const TOTAL_CANVAS_SLIDES = 4;
-const introSource = "./assets/Playbook/V_Playbook.mp4";
+const introSource = "./assets/Playbook/V_Playbook.webm";
 const VIDEO_FADE_DURATION = 700;
 
 let state = "intro";
