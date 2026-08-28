@@ -5,9 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
     history.scrollRestoration = "manual";
+    let scrollResetTimers = [];
+    let shouldResetScroll = true;
     const resetScrollPosition = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    resetScrollPosition();
-    window.addEventListener("pageshow", resetScrollPosition);
+    const cancelScrollReset = () => {
+      shouldResetScroll = false;
+      scrollResetTimers.forEach(window.clearTimeout);
+      scrollResetTimers = [];
+    };
+    const scheduleScrollReset = () => {
+      shouldResetScroll = true;
+      scrollResetTimers.forEach(window.clearTimeout);
+      scrollResetTimers = [0, 32, 100, 250, 500, 1000, 1500].map((delay) => window.setTimeout(() => {
+        if (shouldResetScroll) resetScrollPosition();
+      }, delay));
+      window.setTimeout(() => {
+        shouldResetScroll = false;
+      }, 1800);
+      resetScrollPosition();
+    };
+    ["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+      window.addEventListener(eventName, cancelScrollReset, { once: true, capture: true });
+    });
+    scheduleScrollReset();
+    window.addEventListener("pageshow", scheduleScrollReset);
   </script>
   <title>그 사진, 여기서 찍었었지</title>
   <meta name="description" content="그 사진, 여기서 찍었었지 - Hyundai UserStory">
