@@ -1,4 +1,42 @@
 const sequenceVideo = document.querySelector("#sequence-video");
+if (window.history) window.history.scrollRestoration = "manual";
+
+let scrollResetTimers = [];
+let shouldResetScroll = true;
+
+function resetScrollPosition() {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+}
+
+function cancelScrollReset() {
+  shouldResetScroll = false;
+  scrollResetTimers.forEach(window.clearTimeout);
+  scrollResetTimers = [];
+}
+
+function scheduleScrollReset() {
+  shouldResetScroll = true;
+  scrollResetTimers.forEach(window.clearTimeout);
+  scrollResetTimers = [0, 32, 100, 250, 500, 1000, 1500].map((delay) => window.setTimeout(() => {
+    if (shouldResetScroll) resetScrollPosition();
+  }, delay));
+  window.setTimeout(() => {
+    shouldResetScroll = false;
+  }, 1800);
+  resetScrollPosition();
+}
+
+["wheel", "touchstart", "pointerdown", "keydown"].forEach((eventName) => {
+  window.addEventListener(eventName, cancelScrollReset, { once: true, capture: true });
+});
+window.addEventListener("scroll", () => {
+  if (shouldResetScroll) resetScrollPosition();
+}, { passive: true, capture: true });
+scheduleScrollReset();
+window.addEventListener("pageshow", scheduleScrollReset);
+
 const startOverlay = document.querySelector("#start-overlay");
 const skipButton = document.querySelector("#skip-button");
 const playbackButton = document.querySelector("#playback-button");
