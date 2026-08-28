@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
     history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
+    const resetScrollPosition = () => window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    resetScrollPosition();
+    window.addEventListener("pageshow", resetScrollPosition);
   </script>
   <title>그 사진, 여기서 찍었었지</title>
   <meta name="description" content="그 사진, 여기서 찍었었지 - Hyundai UserStory">
