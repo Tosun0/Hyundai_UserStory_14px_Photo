@@ -52,6 +52,7 @@ scenarioDotsContainer.innerHTML = scenarioSlides.map((_, index) => `<button clas
 const scenarioDots = scenarioDotsContainer.querySelectorAll(".p-dot");
 const indicatorCounter = document.querySelector("#indicator-counter");
 const TOTAL_CANVAS_SLIDES = scenarioSlides.length;
+scenarioStage.style.setProperty("--scenario-scroll-distance", `${TOTAL_CANVAS_SLIDES * 100}dvh`);
 const introSource = "./assets/Playbook/V_Playbook.webm";
 const VIDEO_FADE_DURATION = 700;
 
